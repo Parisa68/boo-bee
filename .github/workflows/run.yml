@@ -1,0 +1,33 @@
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  summarizer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.7'
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.22.1'
+
+      # Step 3: Run setup.sh to install necessary dependencies
+      - name: Run setup.sh
+        run: |
+          chmod +x setup.sh
+          ./setup.sh
+      - name: Run summarizer script
+        run: |
+          go run .\main.go
+
