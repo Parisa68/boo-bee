@@ -1,0 +1,38 @@
+# IntelliJ IDEA related
+.idea/
+*.iml
+*.iws
+out/
+
+# Go related
+bin/
+pkg/
+*.exe
+*.test
+*.out
+
+# Go dependency files
+vendor/
+go.sum
+
+# Python related
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+build/
+dist/
+venv/
+env/
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Optional: Shell scripts or temp files
+scripts/*.sh
+*.tmp
