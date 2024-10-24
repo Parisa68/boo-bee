@@ -2,8 +2,34 @@ package main
 
 import (
 	"fmt"
+	"io"
+	"net/http"
+	"net/url"
 	"os/exec"
+	"strings"
 )
+
+const telegramAPI = "https://api.telegram.org/bot%s/sendMessage"
+
+func sendTelegramMessage(token string, chatID string, message string) error {
+	apiUrl := fmt.Sprintf(telegramAPI, token)
+	data := url.Values{
+		"chat_id": {chatID},
+		"text":    {message},
+	}
+
+	resp, err := http.PostForm(apiUrl, data)
+	if err != nil {
+		return err
+	}
+	_, _ = io.ReadAll(resp.Body)
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("failed to send message, status: %d", resp.StatusCode)
+	}
+	return nil
+}
 
 func main() {
 	article := `Once, in a town surrounded by endless fields of sunflowers, there was a clockmaker named Felix. He was known not only for his skill but also for the magic he seemed to weave into every clock he made. His creations were always precise, but more than that, they had a curious tendency to affect time itself.
@@ -25,10 +51,21 @@ In that moment, Felix felt the weight of the years lift off his shoulders. The c
 From that day forward, Felix’s clocks never just told time—they gave people a chance to find moments they thought they had lost, offering glimpses into the past and a way to reshape their futures.`
 	cmd := exec.Command("python3", "summarize.py", article)
 
-	out, err := cmd.CombinedOutput()
+	out, err := cmd.Output()
 	if err != nil {
 		fmt.Println("Error:", err)
+		return
 	}
 
-	fmt.Println("Summary:", string(out))
+	summary := strings.TrimSpace(string(out))
+	fmt.Println("Summary:", summary)
+
+	botToken := os.Getenv("BOT_TOKEN")
+	chatID := os.Getenv("CHAT_ID")
+	err = sendTelegramMessage(botToken, chatID, strings.ToValidUTF8(summary, ""))
+	if err != nil {
+		fmt.Println("Error sending summary to Telegram:", err)
+	} else {
+		fmt.Println("Summary sent successfully!")
+	}
 }

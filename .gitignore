@@ -36,3 +36,4 @@ Thumbs.db
 # Optional: Shell scripts or temp files
 scripts/*.sh
 *.tmp
+set_env.sh
