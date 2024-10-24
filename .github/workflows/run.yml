@@ -31,5 +31,5 @@ jobs:
         run: |
           export BOT_TOKEN=${{ secrets.BOT_TOKEN }}
           export CHAT_ID=${{ secrets.CHAT_ID }}
-          go run .\main.go
+          go run ./main.go
 
