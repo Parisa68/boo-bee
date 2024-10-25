@@ -33,23 +33,36 @@ func sendTelegramMessage(token string, chatID string, message string) error {
 }
 
 func main() {
-	article := `Once, in a town surrounded by endless fields of sunflowers, there was a clockmaker named Felix. He was known not only for his skill but also for the magic he seemed to weave into every clock he made. His creations were always precise, but more than that, they had a curious tendency to affect time itself.
+	article := `
+Once upon a time, in a cozy forest full of tall trees and colorful flowers, there lived a little squirrel named Nibbles. Nibbles was a curious squirrel with a fluffy tail, and he loved to explore every nook and cranny of the forest. His best friend was a small bluebird named Blue, who loved to fly high and tell stories about the places he had seen.
 
-One day, a mysterious woman named Selene entered his shop, carrying a peculiar timepiece. It was an ancient pocket watch, its gold exterior dull and worn. "This watch," she said, her voice low and calm, "does not count time as it should. Can you fix it?"
+One chilly autumn morning, Nibbles was busy gathering acorns to store for the winter. Blue fluttered down beside him, chirping with excitement.
 
-Felix examined the watch, noticing something odd. Its hands moved backward slowly, as if trying to undo the past. He carefully opened the back, revealing intricate mechanisms that seemed almost alive, ticking and shifting on their own.
+“Nibbles!” Blue said, “I heard from the owls that there’s a secret treasure hidden in the forest! They say it’s something sparkly and magical, and no one has found it in years!”
 
-"I can try," Felix replied, intrigued. Over the next few days, he worked tirelessly on the watch, but every time he adjusted a gear or tightened a spring, the watch would reverse even faster. It seemed to resist any attempt to move forward.
+Nibbles’ eyes sparkled with curiosity. “A treasure? Let’s go find it, Blue!” he said, his fluffy tail twitching with excitement.
 
-Late one night, as Felix was on the verge of giving up, the watch suddenly stopped. For a moment, everything around him grew silent. The world outside his window froze—no wind, no rustling leaves, not even a sound from the busy street. Felix realized the watch wasn’t broken; it had been controlling time all along.
+Blue led the way, flying above the treetops while Nibbles scampered along the forest floor. They crossed over babbling brooks, through patches of tall grass, and under branches covered in bright red and yellow leaves. As they searched, they met some friends along the way.
 
-Selene returned the next morning. "It’s not meant to be fixed," Felix told her. "This watch... it controls time. I can feel it."
+First, they met Hoot, the wise old owl, who was napping on a low branch. Hoot opened one eye and asked, “What brings you two so far from home?”
 
-Selene smiled knowingly. "I didn’t ask you to fix it, Felix. I asked you to understand it."
+“We’re looking for the secret treasure!” Nibbles squeaked. “Do you know where it is?”
 
-In that moment, Felix felt the weight of the years lift off his shoulders. The clocks around him chimed all at once, marking a new beginning. Selene took the watch, leaving behind a single sunflower on his workbench, and with a nod, she disappeared as quietly as she had arrived.
+Hoot smiled, his feathers fluffing up. “I’ve heard it lies beyond the Old Oak, where the flowers grow even in winter.”
 
-From that day forward, Felix’s clocks never just told time—they gave people a chance to find moments they thought they had lost, offering glimpses into the past and a way to reshape their futures.`
+With Hoot’s advice, Nibbles and Blue continued their journey until they reached the Old Oak tree. It was a huge tree with a trunk so wide that it would take ten squirrels to wrap around it! Beyond it, they saw a meadow, and there, blooming among the fallen leaves, were tiny white flowers. And right in the middle of the flowers was a little shiny stone, sparkling under the sunlight.
+
+Nibbles gasped. “This must be the treasure!”
+
+He picked up the stone, and as he held it, the stone began to glow softly. Suddenly, the entire meadow felt warmer, as if the stone was giving off a gentle, comforting light. Blue chirped in delight and flew in circles around Nibbles.
+
+“This treasure isn’t just sparkly—it’s magical!” Blue chirped. “The forest will be warm through winter with this!”
+
+Nibbles and Blue decided to share the stone’s warmth with all their friends. They took it to the center of the forest, where everyone could come and feel its cozy glow on chilly days. All the animals in the forest gathered around, from the tiny ants to the big, sleepy bear, feeling the warmth of the magical stone.
+
+As winter came, the forest was still warm, and everyone was happy, all thanks to Nibbles and Blue’s adventure. And whenever Nibbles looked at his friend, he remembered the joy of exploring and the magic of sharing.
+
+And so, every autumn, Nibbles and Blue would tell the story of their adventure, reminding everyone that sometimes, the greatest treasures are the ones that bring warmth and happiness to everyone around.`
 	cmd := exec.Command("python3", "summarize.py", article)
 
 	out, err := cmd.Output()
